@@ -6,10 +6,10 @@ def index(request):
     return HttpResponse("Hello World")
 
 def detail(request, subject_id):
-    return HttpResponse({'subject_id': subject_id, 'anwser_count': 0})
+    return HttpResponse('Subject ID %s' % subject_id)
 
-def answer(request, subject_id):
-    return HttpResponse({'subject_id': subject_id, 'answers': {'answer': '1', 'answer': '2'}})
+def answers(request, subject_id):
+    return HttpResponse('Subject ID %s' % subject_id)
 
-def vote(request, subject_id, answer_text):
-    return HttpResponse({'subject_id': subject_id, 'answer': answer_text})
+def vote(request, subject_id):
+    return HttpResponse('Subject ID %s' % subject_id)
