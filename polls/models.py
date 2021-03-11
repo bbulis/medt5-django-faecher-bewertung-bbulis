@@ -6,13 +6,11 @@ class Subject(models.Model):
     answer_count = models.IntegerField(default=0)
 
     def __str__(self) -> str:
-        ret = {'subject_name': self.subject_name, 'answer_count': self.answer_count}
-        return ret
+        return self.subject_name
 
 class Answer(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     answer_text = models.CharField(max_length=255)
 
     def __str__(self) -> str:
-        ret = {'subject_name': self.subject, 'answer_text': self.answer_text}
-        return ret
+        return self.answer_text
