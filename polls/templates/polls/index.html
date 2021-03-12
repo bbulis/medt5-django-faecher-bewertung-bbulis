@@ -1,0 +1,9 @@
+{% if subject_list %}
+<ul>
+    {% for subject in subject_list %}
+        <li><a href="/polls/{{ subject.id }}/">{{ subject.subject_name}}({{ subject.answer_count }})</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>Keine Fächer zur bewertung verfügbar</p>
+{% endif %}
