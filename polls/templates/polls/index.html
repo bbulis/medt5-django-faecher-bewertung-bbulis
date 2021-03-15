@@ -22,13 +22,13 @@
         <h1>Fächer Bewertung</h1>
         <p>Schuljahr 2020/21</p>
     </div>
-
+    <br>
     <div class="container">
     {% if subject_list %}
     <ul class="collection with-header">
         <li class="collection-header"><h4>Fächer</h4></li>
         {% for subject in subject_list %}
-            <li class="collection-item"><a href="/polls/{{ subject.id }}/">{{ subject.subject_name}} ({{ subject.answer_count }} Bewertungen)<i class="material-icons secondary-content">send</i></a></li>
+            <li class="collection-item"><a href="{% url 'detail' subject.id %}">{{ subject.subject_name }} ({{ subject.answer_count }} Bewertungen)<i class="material-icons secondary-content">send</i></a></li>
         {% endfor %}
     </ul>
     {% else %}
