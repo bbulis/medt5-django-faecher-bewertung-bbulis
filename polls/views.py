@@ -33,12 +33,14 @@ def answers(request, subject_id):
     return render(request, 'polls/answer.html', context)
 
 def vote(request, subject_id):
+    subject = Subject.objects.get(pk=subject_id)
     try:
         selected = request.POST.get('answer')
-        print(selected)
+        subject.answer_set.create(answer_text = selected)
+        subject.save()
     except:
         return render(request, 'polls/detail.html', {
-            'error_message': 'Keine Frage ausgewählt'
+            'error_message': 'Kein Fach ausgewählt'
         })
     else:
         return redirect('index')
