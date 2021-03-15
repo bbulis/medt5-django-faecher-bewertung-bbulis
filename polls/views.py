@@ -9,6 +9,9 @@ from .models import Answer
 
 def index(request):
     subject_list = Subject.objects.all()
+    for subject in subject_list:
+        sub = Subject.objects.get(pk=subject.id)
+        subject.answer_count = sub.answer_set.count()
     context = {'subject_list': subject_list}
     return render(request, 'polls/index.html', context)
 
