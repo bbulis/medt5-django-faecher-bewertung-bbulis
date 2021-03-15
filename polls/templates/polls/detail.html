@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Fächer Bewertung</h1>
+        <p>Schuljahr 2020/21</p>
+    </div>
+
+    <div class="container">
+        <!--
+            {% if subject_list %}
+            <ul class="collection with-header">
+                <li class="collection-header"><h4>Fächer</h4></li>
+                {% for subject in subject_list %}
+                    <li class="collection-item"><a href="/polls/{{ subject.id }}/">{{ subject.subject_name}} ({{ subject.answer_count }} Bewertungen)<i class="material-icons secondary-content">send</i></a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <p class="center-align">Keine Fächer zur bewertung verfügbar</p>
+            {% endif %} 
+        -->
+        {% if answer %}
+            <ul class="collection with-header">
+                <li class="collection-header"><h4>Bewertungen {{ answer.subject}}</h4></li>
+                <li class="collection-item"><b>zu hoch: {{ answer.high }}</b> Bewertung/en</li>
+                <li class="collection-item"><b>genau richtig: {{ answer.correct }}</b> Bewertung/en</li>
+                <li class="collection-item"><b>zu niedrig: {{ answer.low }}</b> Bewertung/en</li>
+            </ul>
+        {% else %}
+            <p class="center-align">Keiner Bewertungen des Faches einsehbar</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+
