@@ -24,30 +24,7 @@
     </div>
 
     <div class="container">
-        <!--
-            {% if subject_list %}
-            <ul class="collection with-header">
-                <li class="collection-header"><h4>Fächer</h4></li>
-                {% for subject in subject_list %}
-                    <li class="collection-item"><a href="/polls/{{ subject.id }}/">{{ subject.subject_name}} ({{ subject.answer_count }} Bewertungen)<i class="material-icons secondary-content">send</i></a></li>
-                {% endfor %}
-            </ul>
-            {% else %}
-                <p class="center-align">Keine Fächer zur bewertung verfügbar</p>
-            {% endif %} 
-        -->
         <br>
-
-        <!-- {% if answer %}
-            <ul class="collection with-header">
-                <li class="collection-header"><h4>Bewertungen {{ answer.subject }}</h4></li>
-                <li class="collection-item"><b>zu hoch: </b>{{ answer.high }} Bewertung/en</li>
-                <li class="collection-item"><b>genau richtig: </b>{{ answer.correct }} Bewertung/en</li>
-                <li class="collection-item"><b>zu niedrig: </b>{{ answer.low }} Bewertung/en</li>
-            </ul>
-        {% else %}
-            <p class="center-align">Keiner Bewertungen des Faches einsehbar</p>
-        {% endif %} -->
         <ul class="collection with-header">
             <li class="collection-header"><h4>Abstimmung {{ subject }}</h4></li>
         </ul>

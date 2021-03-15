@@ -8,6 +8,9 @@ from .models import Answer
 # Create your views here.
 
 def index(request):
+    """
+    function returns subjects and counts all given answers
+    """
     subject_list = Subject.objects.all()
     for subject in subject_list:
         sub = Subject.objects.get(pk=subject.id)
@@ -16,10 +19,10 @@ def index(request):
     return render(request, 'polls/index.html', context)
 
 def detail(request, subject_id):
-    # answer_list = Answer.objects.filter(id=subject_id).all()
-    # context = {'answer_list': answer_list}
+    """
+    function returns selected subject and all counts diffrent answers
+    """
     subject = Subject.objects.get(pk=subject_id)
-    # subject.answer_set.create(answer_text="Genau richtig!")
     high = subject.answer_set.filter(answer_text='high').count()
     correct = subject.answer_set.filter(answer_text='correct').count()
     low = subject.answer_set.filter(answer_text='low').count()
@@ -28,11 +31,17 @@ def detail(request, subject_id):
     return render(request, 'polls/detail.html', context)
 
 def answers(request, subject_id):
+    """
+    function returns view for one subject with all possible answers
+    """
     subject = Subject.objects.get(pk=subject_id)
     context = {'subject': subject}
     return render(request, 'polls/answer.html', context)
 
 def vote(request, subject_id):
+    """
+    function receives picked answer and added to database
+    """
     subject = Subject.objects.get(pk=subject_id)
     try:
         selected = request.POST.get('answer')
