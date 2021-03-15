@@ -55,19 +55,19 @@
             {% csrf_token %}
             <p>
                 <label>
-                    <input type="radio" name="answer" id="high" />
+                    <input type="radio" name="answer" id="high" value="high" />
                     <span>zu hoch</span>
                 </label>
             </p>
             <p>
                 <label>
-                    <input type="radio" name="answer" id="correct" checked />
+                    <input type="radio" name="answer" id="correct" value="correct" checked />
                     <span>genau richtig</span>
                 </label>
             </p>
             <p>
                 <label>
-                    <input type="radio" name="answer" id="low" />
+                    <input type="radio" name="answer" id="low" value="low" />
                     <span>zu niedrig</span>
                 </label>
             </p>
