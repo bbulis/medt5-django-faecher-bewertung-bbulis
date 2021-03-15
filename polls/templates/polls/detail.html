@@ -38,10 +38,10 @@
         -->
         {% if answer %}
             <ul class="collection with-header">
-                <li class="collection-header"><h4>Bewertungen {{ answer.subject}}</h4></li>
-                <li class="collection-item"><b>zu hoch: {{ answer.high }}</b> Bewertung/en</li>
-                <li class="collection-item"><b>genau richtig: {{ answer.correct }}</b> Bewertung/en</li>
-                <li class="collection-item"><b>zu niedrig: {{ answer.low }}</b> Bewertung/en</li>
+                <li class="collection-header"><h4>Bewertungen {{ answer.subject }}</h4></li>
+                <li class="collection-item"><b>zu hoch: </b>{{ answer.high }} Bewertung/en</li>
+                <li class="collection-item"><b>genau richtig: </b>{{ answer.correct }} Bewertung/en</li>
+                <li class="collection-item"><b>zu niedrig: </b>{{ answer.low }} Bewertung/en</li>
             </ul>
         {% else %}
             <p class="center-align">Keiner Bewertungen des Faches einsehbar</p>

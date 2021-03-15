@@ -1,3 +1,4 @@
+from typing import ContextManager
 from django.http.response import JsonResponse
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -15,8 +16,13 @@ def detail(request, subject_id):
     # answer_list = Answer.objects.filter(id=subject_id).all()
     # context = {'answer_list': answer_list}
     subject = Subject.objects.get(pk=subject_id)
-    subject.answer_set.create(answer_text="Genau richtig!")
-    return JsonResponse(subject.answer_set.all(), safe=False)
+    # subject.answer_set.create(answer_text="Genau richtig!")
+    high = subject.answer_set.filter(answer_text='high').count()
+    correct = subject.answer_set.filter(answer_text='correct').count()
+    low = subject.answer_set.filter(answer_text='low').count()
+    answer = {'subject' : subject, 'high' : high, 'correct' : correct, 'low' : low}
+    context = {'answer': answer}
+    return render(request, 'polls/detail.html', context)
 
 def answers(request, subject_id):
     return HttpResponse('Subject ID %s' % subject_id)
