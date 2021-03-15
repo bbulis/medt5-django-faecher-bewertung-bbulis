@@ -37,7 +37,7 @@
             {% endif %} 
         -->
         <br>
-
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
         {% if answer %}
             <ul class="collection with-header">
                 <li class="collection-header"><h4>Bewertungen {{ answer.subject }}</h4></li>

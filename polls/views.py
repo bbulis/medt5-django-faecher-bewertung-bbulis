@@ -1,6 +1,6 @@
 from typing import ContextManager
-from django.http.response import JsonResponse
-from django.shortcuts import render
+from django.http.response import HttpResponseRedirect, JsonResponse
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 
 from .models import Subject
@@ -28,7 +28,17 @@ def detail(request, subject_id):
     return render(request, 'polls/detail.html', context)
 
 def answers(request, subject_id):
-    return HttpResponse('Subject ID %s' % subject_id)
+    subject = Subject.objects.get(pk=subject_id)
+    context = {'subject': subject}
+    return render(request, 'polls/answer.html', context)
 
 def vote(request, subject_id):
-    return HttpResponse('Subject ID %s' % subject_id)
+    try:
+        selected = request.POST.get('answer')
+        print(selected)
+    except:
+        return render(request, 'polls/detail.html', {
+            'error_message': 'Keine Frage ausgewählt'
+        })
+    else:
+        return redirect('index')
