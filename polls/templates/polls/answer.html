@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Fächer Bewertung</h1>
+        <p>Schuljahr 2020/21</p>
+    </div>
+
+    <div class="container">
+        <!--
+            {% if subject_list %}
+            <ul class="collection with-header">
+                <li class="collection-header"><h4>Fächer</h4></li>
+                {% for subject in subject_list %}
+                    <li class="collection-item"><a href="/polls/{{ subject.id }}/">{{ subject.subject_name}} ({{ subject.answer_count }} Bewertungen)<i class="material-icons secondary-content">send</i></a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <p class="center-align">Keine Fächer zur bewertung verfügbar</p>
+            {% endif %} 
+        -->
+        <br>
+
+        <!-- {% if answer %}
+            <ul class="collection with-header">
+                <li class="collection-header"><h4>Bewertungen {{ answer.subject }}</h4></li>
+                <li class="collection-item"><b>zu hoch: </b>{{ answer.high }} Bewertung/en</li>
+                <li class="collection-item"><b>genau richtig: </b>{{ answer.correct }} Bewertung/en</li>
+                <li class="collection-item"><b>zu niedrig: </b>{{ answer.low }} Bewertung/en</li>
+            </ul>
+        {% else %}
+            <p class="center-align">Keiner Bewertungen des Faches einsehbar</p>
+        {% endif %} -->
+        
+        <form action="{% url 'vote' subject.id %}" method="POST">
+            {% csrf_token %}
+            <p>
+                <label>
+                    <input type="radio" name="group1" id="high" />
+                    <span>zu hoch</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input type="radio" name="group1" id="correct" checked />
+                    <span>genau richtig</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input type="radio" name="group1" id="low" />
+                    <span>zu niedrig</span>
+                </label>
+            </p>
+            <input type="button" value="Anstimmen">
+        </form>
+
+        <br>
+        <h5><a href="{% url 'index'%}">Zurück zur Übersicht</a></h5>
+    </div>
+</body>
+</html>
+
+
