@@ -36,6 +36,8 @@
                 <p class="center-align">Keine Fächer zur bewertung verfügbar</p>
             {% endif %} 
         -->
+        <br>
+
         {% if answer %}
             <ul class="collection with-header">
                 <li class="collection-header"><h4>Bewertungen {{ answer.subject }}</h4></li>
@@ -46,6 +48,9 @@
         {% else %}
             <p class="center-align">Keiner Bewertungen des Faches einsehbar</p>
         {% endif %}
+        <a class="waves-effect waves-light btn" href="{% url 'answers' answer.subject.id %}">Abstimmen</a>
+        <br>
+        <h5><a href="{% url 'index' %}">Zurück zur Übersicht</a></h5>
     </div>
 </body>
 </html>
